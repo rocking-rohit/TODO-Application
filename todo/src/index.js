@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { App, Header } from './App';
+import App from './App';
 import { List, alertClick } from './Components/List';
 import * as serviceWorker from './serviceWorker';
 import { Button } from 'react-bootstrap';
@@ -11,9 +11,6 @@ const list = ['rohit', 'rayudu', 'rgv'];
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Header />
-    <List list={list} />
-    <Button id='add' onClick={alertClick(list)} />
   </React.StrictMode>,
   document.getElementById('root')
 );

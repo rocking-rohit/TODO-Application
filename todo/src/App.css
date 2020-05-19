@@ -37,3 +37,52 @@
     transform: rotate(360deg);
   }
 }
+
+.list-item {
+  color: magenta;
+  margin-right: 15px;
+  background-color: rgb(97, 235, 17);
+  height: 40px;
+  font-size: xx-large;
+  border-style: hidden;
+  border-color: brown;
+  margin: 0 0 3px 0;
+}
+
+.list-item span {
+  margin-right: 30px;
+}
+
+.edit {
+  font-size: medium;
+  color: blueviolet;
+  display: inline;
+  margin-right: 30px;
+}
+
+.delete {
+  display: inline;
+  font-size: medium;
+  color: red;
+  margin-right: 30px;
+}
+
+.mylist label {
+  color: red;
+  font-size: 200%;
+}
+
+.mylist textarea {
+  color: red;
+  font-size: 200%;
+  width: 300px;
+  height: 100px;
+  vertical-align: middle;
+  margin-right: 50px;
+}
+
+.submit-button {
+  color: red;
+  width: 50px;
+  height: 50px;
+}
