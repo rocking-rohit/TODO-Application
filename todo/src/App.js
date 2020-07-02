@@ -27,7 +27,6 @@ class App extends Component {
 
   addToList = () => {
     const value = this.state.input;
-
     this.setState({
       list: [...this.state.list, value],
     });
@@ -53,9 +52,11 @@ class App extends Component {
   };
 
   updateItem = data => {
+    const newList = this.state.list;
+    newList[this.state.key] = data;
     this.setState({
-      list:[...this.state.list, data]
-    })
+      list:newList
+    });
   }
 
   render() {
@@ -82,7 +83,7 @@ class App extends Component {
           Submit
         </Button>
         {
-          this.state.showPopup ? <EditPopup data={this.state.list[this.state.key]} close={this.clickPopUp.bind(this)} update={this.updateItem.bind(this)}/> : ''
+          this.state.showPopup ? <EditPopup data={this.state.list[this.state.key]} close={()=>this.clickPopUp.bind(this)} update={this.updateItem.bind(this)}/> : ''
         }
       </div>
     );
