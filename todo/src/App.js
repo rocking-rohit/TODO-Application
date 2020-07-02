@@ -45,10 +45,11 @@ class App extends Component {
   };
 
   clickPopUp = (key) => {
-    this.setState({
-      key,
-      showPopup: !this.state.showPopup
-    })
+    
+      this.setState({
+        key,
+        showPopup: !this.state.showPopup
+      })
   };
 
   updateItem = data => {
@@ -83,7 +84,7 @@ class App extends Component {
           Submit
         </Button>
         {
-          this.state.showPopup ? <EditPopup data={this.state.list[this.state.key]} close={()=>this.clickPopUp.bind(this)} update={this.updateItem.bind(this)}/> : ''
+          this.state.showPopup ? <EditPopup data={this.state.list[this.state.key]} close={()=>this.clickPopUp(this.state.key)} update={this.updateItem.bind(this)}/> : ''
         }
       </div>
     );

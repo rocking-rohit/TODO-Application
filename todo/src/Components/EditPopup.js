@@ -22,7 +22,7 @@ class PopUp extends Component {
          <div className="popup">
            <label>Data</label>
            <textarea defaultValue = {this.props.data} onChange={(e)=>{this.setState({content: e.target.value})}}/>
-           <span className="popup-span" onClick={this.closePopUp.bind(this)}>CLOSE</span>
+           <span className="popup-span" onClick={this.closePopUp}>CLOSE</span>
            <button onClick={this.updateItemPopUp.bind(this)}></button>
          </div>
       );
