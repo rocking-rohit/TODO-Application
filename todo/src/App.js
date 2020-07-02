@@ -2,19 +2,20 @@ import { Button, Modal } from 'react-bootstrap';
 import React, { Component } from 'react';
 import './App.css';
 import Item from './Components/Item.js';
-
-function edit() {
-  console.log('EDIT');
-}
+import EditPopup from './Components/EditPopup.js'
+import { render } from '@testing-library/react';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      clicked: false,
       list: [],
       elements: '',
       input: '',
+      showPopup: false,
+      key:'',
     };
   }
 
@@ -44,6 +45,19 @@ class App extends Component {
     });
   };
 
+  clickPopUp = (key) => {
+    this.setState({
+      key,
+      showPopup: !this.state.showPopup
+    })
+  };
+
+  updateItem = data => {
+    this.setState({
+      list:[...this.state.list, data]
+    })
+  }
+
   render() {
     return (
       <div className='mylist'>
@@ -53,7 +67,7 @@ class App extends Component {
             <Item
               key={i}
               listitem={listitem}
-              edit={edit}
+              edit={() => this.clickPopUp(i)}
               delete={() => this.deleteItem(i)}
             />
           ))}
@@ -67,9 +81,14 @@ class App extends Component {
         >
           Submit
         </Button>
+        {
+          this.state.showPopup ? <EditPopup data={this.state.list[this.state.key]} close={this.clickPopUp.bind(this)} update={this.updateItem.bind(this)}/> : ''
+        }
       </div>
     );
   }
 }
+
+
 
 export default App;

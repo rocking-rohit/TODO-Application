@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-function Example() {
-  const [show, setShow] = false;
+class PopUp extends Component {
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+   state = {
+      content: this.props.data
+   }
 
-  return (
-    <Button variant='primary' onClick={handleShow}>
-      Launch demo modal
-    </Button>
-  );
-}
+  closePopUp = (e)=>{
+     e.preventDefault();
+     this.props.close();
+  }
 
-export default Example;
+  updateItemPopUp = (e) => {
+     e.preventDefault();
+     this.props.update(this.state.content)
+  }
+  
+  render() {
+      return (
+         <div className="popup">
+           <label>Data</label>
+           <textarea defaultValue = {this.props.data} onChange={(e)=>{this.setState({content: e.target.value})}}/>
+           <span className="popup-span" onClick={this.closePopUp.bind(this)}>CLOSE</span>
+           <button onClick={this.updateItemPopUp.bind(this)}></button>
+         </div>
+      );
+   }
+ }
+
+export default PopUp;
