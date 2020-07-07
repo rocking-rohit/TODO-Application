@@ -20,15 +20,18 @@ class App extends Component {
   }
 
   changeText = (event) => {
+    console.log(event.target.value);
     this.setState({
       input: event.target.value,
     });
   };
 
-  addToList = () => {
+  addToList = (event) => {
+    console.log(event);
     const value = this.state.input;
     this.setState({
       list: [...this.state.list, value],
+      input:''
     });
   };
 
@@ -45,7 +48,6 @@ class App extends Component {
   };
 
   clickPopUp = (key) => {
-    
       this.setState({
         key,
         showPopup: !this.state.showPopup
@@ -75,7 +77,7 @@ class App extends Component {
           ))}
         </ul>
         <label>Enter Names</label>
-        <textarea type='text' onChange={this.changeText}></textarea>
+        <input type='text' onBlur={this.changeText.bind(this)}></input>
         <Button
           variant='primary'
           className='submit-button'

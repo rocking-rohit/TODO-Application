@@ -23,7 +23,7 @@ class PopUp extends Component {
            <label>Data</label>
            <textarea defaultValue = {this.props.data} onChange={(e)=>{this.setState({content: e.target.value})}}/>
            <span className="popup-span" onClick={this.closePopUp}>CLOSE</span>
-           <button onClick={this.updateItemPopUp.bind(this)}></button>
+           <button className="data-edit-btn" onClick={this.updateItemPopUp.bind(this)}>Change</button>
          </div>
       );
    }

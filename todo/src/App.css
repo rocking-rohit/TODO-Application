@@ -39,57 +39,74 @@
 }
 
 .list-item {
-  color: magenta;
+  color: red;
   margin-right: 15px;
-  background-color: rgb(97, 235, 17);
   height: 40px;
   font-size: xx-large;
   border-style: hidden;
   border-color: brown;
-  margin: 0 0 3px 0;
+  margin: 0 0 30px 5px;
 }
 
 .list-item span {
-  margin-right: 30px;
+  margin-right: 70px;
 }
 
 .edit {
   font-size: medium;
-  color: blueviolet;
+  color: blue;
   display: inline;
   margin-right: 30px;
+  border-style: ridge;
+  border-color: black;
+  padding: 10px;
+  background: azure;
+  text-decoration: none;
 }
 
 .delete {
-  display: inline;
   font-size: medium;
-  color: red;
+  color: blue;
+  display: inline;
   margin-right: 30px;
+  border-style: ridge;
+  border-color: black;
+  padding: 10px;
+  background: azure;
+  text-decoration: none;
+}
+
+.mylist {
+  background: #f1f1f1;
+  padding: 30px;
 }
 
 .mylist label {
-  color: red;
-  font-size: 200%;
+  font-size: 100%;
+  margin-right: 15px;
 }
 
-.mylist textarea {
-  color: red;
+.mylist input {
   font-size: 200%;
   width: 300px;
-  height: 100px;
+  height: 50px;
   vertical-align: middle;
   margin-right: 50px;
+  border-color: blue;
+  border-style: groove;
+  border-width: medium;
 }
 
 .submit-button {
-  color: red;
-  width: 50px;
+  width: 80px;
   height: 50px;
+  background: greenyellow;
+  border-radius: 5px;
 }
 
 .popup {
   margin: auto;
-  width: 50%;
+  width: 30%;
   border: 3px solid green;
   padding: 10px;
 }
@@ -100,9 +117,41 @@
   height: 40px;
 }
 
+.popup label {
+  font-family: fantasy;
+  font-weight: 200;
+  font-size: larger;
+  font-style: inherit;
+  position: relative;
+  margin-right: auto;
+}
+
+.popup textarea {
+  color: red;
+  position: relative;
+  left: 20px;
+  top: 10px;
+}
+
 .popup .popup-span {
   display: block;
-  background-color: red;
   width: 55px;
   height: 20px;
+  float: right;
+  top: -60px;
+  background: cornsilk;
+  color: red;
+}
+
+.actions {
+  position: relative;
+  float: right;
+  left: -500px;
+}
+
+.data-edit-btn {
+  position: relative;
+  left: 50px;
+  width: 75px;
+  height: 30px;
 }

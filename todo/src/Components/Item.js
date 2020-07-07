@@ -20,12 +20,14 @@ class Item extends Component {
     return (
       <li key={this.props.keyName} className='list-item'>
         <span>{this.props.listitem}</span>
+        <div className="actions">
         <a onClick={this.props.edit} href='#edit' className='edit'>
           Edit This Item
         </a>
         <a onClick={this.props.delete} href='#delete' className='delete'>
           Delete This Template
         </a>
+        </div>
       </li>
     );
   }
