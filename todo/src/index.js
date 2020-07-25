@@ -1,18 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { List, alertClick } from './Components/List';
-import * as serviceWorker from './serviceWorker';
-import { Button } from 'react-bootstrap';
-
-const list = ['rohit', 'rayudu', 'rgv'];
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { Button } from "react-bootstrap";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

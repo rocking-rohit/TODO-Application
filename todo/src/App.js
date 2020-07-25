@@ -1,98 +1,51 @@
-import { Button, Modal } from 'react-bootstrap';
-import React, { Component } from 'react';
-import './App.css';
-import Item from './Components/Item.js';
-import EditPopup from './Components/EditPopup.js'
-import { render } from '@testing-library/react';
+import { Button, Modal } from "react-bootstrap";
+import React, { useState } from "react";
+import List from "./components/List";
+import PopUp from "./components/PopUp";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const [items, setItems] = useState([
+    { item: "Take Bath", description: "Need To Take a shower", key: 1 },
+    { item: "Eat Lunch", description: "Need To eat Paneer", key: 2 },
+    { item: "Play Soccer", description: "Need to Play Crazy", key: 3 },
+  ]);
 
-    this.state = {
-      clicked: false,
-      list: [],
-      elements: '',
-      input: '',
-      showPopup: false,
-      key:'',
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  const addToList = (opts) => {
+    const jsonItem = {
+      item: opts.item,
+      description: opts.description,
+      key: Math.random().toString(),
     };
-  }
-
-  changeText = (event) => {
-    console.log(event.target.value);
-    this.setState({
-      input: event.target.value,
-    });
+    setItems([jsonItem, ...items]);
+    toggleModal();
   };
 
-  addToList = (event) => {
-    console.log(event);
-    const value = this.state.input;
-    this.setState({
-      list: [...this.state.list, value],
-      input:''
-    });
-  };
-
-  show = () => {};
-
-  handleClose = () => {};
-
-  deleteItem = (key) => {
-    const templist = this.state.list;
-    templist.splice(key, 1);
-    this.setState({
-      list: templist,
-    });
-  };
-
-  clickPopUp = (key) => {
-      this.setState({
-        key,
-        showPopup: !this.state.showPopup
+  const removeItem = (key) => {
+    setItems(
+      items.filter((item) => {
+        return key !== item.key;
       })
+    );
   };
 
-  updateItem = data => {
-    const newList = this.state.list;
-    newList[this.state.key] = data;
-    this.setState({
-      list:newList
-    });
-  }
-
-  render() {
-    return (
-      <div className='mylist'>
-        <h1>Hello World</h1>
-        <ul>
-          {this.state.list.map((listitem, i) => (
-            <Item
-              key={i}
-              listitem={listitem}
-              edit={() => this.clickPopUp(i)}
-              delete={() => this.deleteItem(i)}
-            />
-          ))}
-        </ul>
-        <label>Enter Names</label>
-        <input type='text' onBlur={this.changeText.bind(this)}></input>
-        <Button
-          variant='primary'
-          className='submit-button'
-          onClick={this.addToList}
-        >
-          Submit
+  return (
+    <div className="todo-app">
+      <h1>Todo List</h1>
+      <div className="todo-items">
+        <List values={items} delete={removeItem} />
+        <Button variant="primary" size="lg" onClick={toggleModal}>
+          Add Item To List
         </Button>
-        {
-          this.state.showPopup ? <EditPopup data={this.state.list[this.state.key]} close={()=>this.clickPopUp(this.state.key)} update={this.updateItem.bind(this)}/> : ''
-        }
+        <PopUp show={modal} hide={toggleModal} submit={addToList} />
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-
 
 export default App;

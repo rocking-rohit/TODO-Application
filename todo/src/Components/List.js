@@ -1,33 +1,39 @@
-import ReactDOM from 'react-dom';
-import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-import '../List.css';
-import '../Listitem.css';
+import React from "react";
+import { Card, ListGroup, Button } from "react-bootstrap";
 
-function alertClick(list) {
-  console.log(list);
-  alert('alert click');
-}
+export default function List(props) {
+  console.log(props);
 
-class List extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      names: this.props.list.map((n, index) => <li key={index}>{n}</li>),
-    };
-  }
-
-  componentDidMount() {
-    console.log(this.state);
-  }
-
-  render() {
+  const list = props.values.map((value) => {
     return (
-      <div className='list'>
-        <ul className='listitem'>{this.state.names}</ul>
-      </div>
+      <Card
+        bg="info"
+        key={value.key}
+        text="dark"
+        style={{ width: "40rem", marginBottom: "30rem" }}
+        className="mb-2"
+      >
+        <Card.Body>
+          <Card.Title
+            style={{ textDecoration: "underline", fontWeight: "bold" }}
+          >
+            {value.item}
+            <Button
+              onClick={() => {
+                props.delete(value.key);
+              }}
+              variant="danger"
+              value="Close"
+              style={{ float: "right" }}
+            >
+              Delete
+            </Button>
+          </Card.Title>
+          <Card.Text>{value.description}</Card.Text>
+        </Card.Body>
+      </Card>
     );
-  }
-}
+  });
 
-export { List, alertClick };
+  return list;
+}
