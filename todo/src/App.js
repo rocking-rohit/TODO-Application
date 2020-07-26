@@ -1,13 +1,13 @@
 import { Button, Modal } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import List from "./components/List";
 import PopUp from "./components/PopUp";
 
 function App() {
   const [items, setItems] = useState([
-    { item: "Take Bath", description: "Need To Take a shower", key: 1 },
-    { item: "Eat Lunch", description: "Need To eat Paneer", key: 2 },
-    { item: "Play Soccer", description: "Need to Play Crazy", key: 3 },
+    { item: "Have BreakFast", description: "sdfghjkl", key: 1 },
+    { item: "Play Pubg", description: "sdfghjklfghj", key: 2 },
+    { item: "Watch Movie", description: "sdfghjklcvb", key: 3 },
   ]);
 
   const [modal, setModal] = useState(false);
