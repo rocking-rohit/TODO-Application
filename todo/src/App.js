@@ -1,14 +1,16 @@
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import List from "./components/List";
 import PopUp from "./components/PopUp";
 
 function App() {
-  const [items, setItems] = useState([
-    { item: "Have BreakFast", description: "sdfghjkl", key: 1 },
-    { item: "Play Pubg", description: "sdfghjklfghj", key: 2 },
-    { item: "Watch Movie", description: "sdfghjklcvb", key: 3 },
-  ]);
+  const [items, setItems] = useState(
+    localStorage.items ? JSON.parse(localStorage.getItem("items")) : []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   const [modal, setModal] = useState(false);
 

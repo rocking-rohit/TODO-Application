@@ -1,9 +1,7 @@
 import React from "react";
-import { Card, ListGroup, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 export default function List(props) {
-  console.log(props);
-
   const list = props.values.map((value) => {
     return (
       <Card
